@@ -1,8 +1,8 @@
-import axios from 'axios'
+import axios from 'axios';
 
+// eslint-disable-next-line
 export default () => {
-    return axios.create({
-        // point to backend API, URL of server
-        baseURL: 'http://localhost:8081/'
-    })
-}
+  return axios.create({
+    baseURL: 'http://localhost:8081/',
+  });
+};
