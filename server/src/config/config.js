@@ -9,5 +9,8 @@ module.exports = {
       host: process.env.HOST || 'localhost', // tell seqlz the location of db you want to connect
       storage: './tabtracker.sqlite' // where to store your seqlz file
     }        
+  },
+  authentication: {
+    jwtSecret: process.env.JWT_SECRET || 'secret'
   }
 }

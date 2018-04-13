@@ -12,7 +12,7 @@ app.use(cors())
 
 require('./routes')(app)
 
-sequelize.sync()
+sequelize.sync() // {force: true} drop all tables, clean database
   .then(() => {
     app.listen(config.port)
     // process.env.PORT || 8081

@@ -4,7 +4,7 @@
       <div class="white elevation-2 mt-5">
         <v-toolbar flat dense class="light-blue darken-4">
           <v-flex xs10 offset-xs1>
-            <v-toolbar-title>REGISTER</v-toolbar-title>
+            <v-toolbar-title>LOG IN</v-toolbar-title>
           </v-flex>
         </v-toolbar>
         <div class="pl-5 pr-5 pt-4 pb-2">
@@ -26,8 +26,8 @@
           <div class="error" v-html="error" />
           <v-btn
             class="light-blue white--text mb-3"
-            @click="register">
-            SUBMIT
+            @click="login">
+            LOG IN
           </v-btn>
         </div>
       </div>
@@ -39,9 +39,7 @@
 import AuthenticationService from '@/services/AuthenticationService';
 
 export default {
-  // name: 'HelloWorld',
   data() {
-    // set default value in form input
     return {
       email: '',
       password: '',
@@ -49,33 +47,19 @@ export default {
     };
   },
   methods: {
-    async register() {
+    async login() {
       try {
-        const response = await AuthenticationService.register({
+        const response = await AuthenticationService.login({
           email: this.email,
           password: this.password,
         });
         this.$store.dispatch('setToken', response.data.token);
         this.$store.dispatch('setUser', response.data.user);
       } catch (error) {
-        this.error = error.response.data.error; // error.response.data came from axios
+        this.error = error.response.data.error;
       }
     },
-    // console.log(response.data);
   },
-  // just a demonstration
-  // // watch changed value in form input
-  // watch: {
-  //   email (value) {
-  //     console.log('email has changed', value)
-  //   }
-  // },
-  // // more than 2000ms, default value changes
-  // mounted () {
-  //   setTimeout(() => {
-  //     this.email = 'helloworld'
-  //   }, 2000)
-  // }
 };
 </script>
 
